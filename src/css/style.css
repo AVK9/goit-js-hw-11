@@ -1,0 +1,90 @@
+:root {
+  --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-duration: 250ms;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
+  color: var(--text);
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+p {
+  padding: 0;
+  margin: 0;
+}
+.list {
+  list-style: none;
+}
+.link {
+  text-decoration: none;
+}
+.container {
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+
+
+.body{
+    background-color: rgb(37, 36, 35);
+    
+}
+
+.gallery{
+    background-color: rgb(201, 202, 202);
+    display: flex;
+        flex-wrap: wrap;
+    justify-content: center;
+    gap: 20 20;
+
+}
+.photo-card {
+    width: 250px;
+    height: 260px;
+         
+    border-radius: 15px;
+    background-color: rgb(219, 221, 221);
+}
+.images {
+   width: 100%;
+   height: 200px;
+
+}
+.info{
+ display: flex;
+ gap: 10;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+.info-item{
+  margin-top: 12px;
+font-size: 12px;
+text-align: center;
+}
