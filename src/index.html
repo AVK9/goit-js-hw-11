@@ -11,17 +11,20 @@
 
     <!-- <a href="/src/i.html">Work - work</a> -->
 <form class="search-form" id="search-form">
-  <input
+  <input 
+  autofocus
     type="text"
     name="searchQuery"
     autocomplete="off"
     placeholder="Search images..."
   />
-  <button type="submit">Search</button>
+  <button type="submit">🔍</button>
 </form>
-<div class="gallery">
+<div  class="gallery">
 </div>
-<button type="button" class="load-more">Load more</button>
+
+<button type="button" class="load-more hidden">Load more</button>
+<div class="message-finish hidden" hidden>🔴 We're sorry, but you've reached the end of search results.</div>
 
 <script src="./index.js" type="module"></script>
   </body>

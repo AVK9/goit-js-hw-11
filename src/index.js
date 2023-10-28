@@ -1,87 +1,48 @@
 import Notiflix from 'notiflix';
-import axios from "axios";
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
+import pixabayBase from './js/gallery-pixabay.js' 
+import creatMarkup from './js/create-markup.js'
 
-const API_KEY = "40254095-fb7e3bf791467f50a6328bb1e";
-axios.defaults.baseURL = 'https://pixabay.com/api';
 
 const refs = {
-    form: document.querySelector('#search-form'),  
+    form: document.querySelector('#search-form'),
     gallery: document.querySelector('.gallery'),
     loadmoreBtn: document.querySelector('.load-more'),
+    messageFinish: document.querySelector('.message-finish')
 }
-const { searchQuery} = refs.form.elements;
 
-// let inputDataUser;
+const { searchQuery} = refs.form.elements;
+let inputDataUser;
 
 refs.form.addEventListener('submit', onSearchQuery)
-function onSearchQuery(e) {
-    e.preventDefault();
-    pixabayBase(searchQuery.value);
+async function onSearchQuery(e) {
+  e.preventDefault();
+  inputDataUser = searchQuery.value.trim();
+  if (!inputDataUser) {
+    console.log('Pleasure Input Search images...');
+    return Notiflix.Notify.failure(`Pleasure Input Search images...`);
+  }
+    try {
+    const resp = await pixabayBase(inputDataUser);
+      const respArr = resp.hits;
+      // console.log(respArr);
+      // console.log(refs.gallery);
+      creatMarkup(respArr);
     
-}
-
-function pixabayBase (inputDataUser) { 
-   return axios.get('/', {
-       params: {
-           key: API_KEY,
-           q: inputDataUser,
-           image_type: "photo", 
-           orientation: "horizontal",
-           safesearch: "true",
-        }
-   })
-       .then(resp => {
-            refs.gallery.innerHTML =  creatMarkup(resp.data.hits);
-           console.log(resp.data.hits.length);
-           if (!resp.data.hits.length) {
-               Notiflix.Notify.failure(`Sorry, there are no images matching your search query. Please try again.`);
-            }
-    })
+  }
+  catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Error');
+  }
 
 };
 
-function creatMarkup(arr) {
-   // console.log(arr);
-    return arr.map((
-     {
- webformatURL,
-largeImageURL,
-tags,
-likes,
-views,
-comments,
-downloads
-}
-     ) =>
-     `
+//////////////////////////////////////////////////////////////
 
-   
-<div class="photo-card">
-<a class="gallery__link" href="${largeImageURL}">
-  <img class="images" src="${webformatURL}" alt="${tags}" loading="lazy" />
-  
-  <div class="info">
-    <p class="info-item">
-      <b>Likes</b> <br>${likes}
-    </p>
-    <p class="info-item">
-      <b>Views</b> <br>${views}
-    </p>
-    <p class="info-item">
-      <b>Comments</b> <br>${comments}
-    </p>
-    <p class="info-item">
-      <b>Downloads</b> <br>${downloads}
-    </p>
-  </div>
-  </a>
-</div>
-        `).join("");
+// function search() {
+// page = 1;
+// refs.gallery.innerHTML = '';
 
-}
-    const lightbox = new SimpleLightbox('.gallery a', {
-        captionsData: "alt",
-        captionDelay: 250,
-});
+// };
+
+export { refs};
+
