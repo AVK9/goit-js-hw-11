@@ -2,7 +2,7 @@ import axios from "axios";
 
 axios.defaults.baseURL = 'https://pixabay.com/api';
 const API_KEY = "40254095-fb7e3bf791467f50a6328bb1e";
-let page = 1;
+import { page } from "../index";
 
 export default async function pixabayBase(inputDataUser) {
   try {
@@ -14,10 +14,13 @@ export default async function pixabayBase(inputDataUser) {
             orientation: "horizontal",
             safesearch: "true",
             per_page: 40,
-            page,
+            page: `${page}`,
         }
       });
-      console.log(response.data);
+    
+    // console.log(response.data);
+    // console.log(response.data.totalHits);
+
     return response.data
   } catch (error) {
     console.error(error);

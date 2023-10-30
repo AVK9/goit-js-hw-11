@@ -2,10 +2,8 @@ import { refs} from '../index';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-
-
 export default function creatMarkup(respArr) {
-   console.log(respArr);
+   
    const markupGel = respArr.map((
       {
          webformatURL,
@@ -19,7 +17,8 @@ export default function creatMarkup(respArr) {
    ) => `
        <div class="photo-card">
           <a class="gallery__link" href="${largeImageURL}">
-             <img class="images" src="${webformatURL}" alt="${tags}" loading="lazy" />
+             <img class="images" src="${webformatURL}"
+              alt="${tags}" loading="lazy" />
                 <div class="info">
                    <p class="info-item"><b>Likes</b> <br>${likes}</p>
                    <p class="info-item"><b>Views</b> <br>${views}</p>
@@ -29,19 +28,7 @@ export default function creatMarkup(respArr) {
           </a>
        </div>
        `).join("");
-   refs.gallery.innerHTML = markupGel;
-      let lightbox;
-lightbox = new SimpleLightbox('.gallery a');
-
+    refs.gallery.innerHTML = markupGel;
+    let lightbox = new SimpleLightbox('.gallery a');
+    lightbox.refresh();
 }
-
-
-//<li class="gallery__item">
-  // <a class="gallery__link" unsafe-inline href="${largeImageURL}">
-  //    <img
- //         class="gallery__image"
- //         src="${webformatURL}"
- //         alt="${tags}"
- //         loading="lazy" />
-//   </a>
-//</li>

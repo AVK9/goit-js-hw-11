@@ -8,24 +8,26 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
+     <form class="search-form" id="search-form">
+       <input 
+          class="search-input"
+          autofocus
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+       />
+        <button type="submit">🔍</button>
+     </form>
+     <div  class="gallery">
+     </div>
+     <button type="button" class="load-more hidden">
+         Load more
+      </button>
+     <div class="message-finish hidden" hidden>
+         🔴 We're sorry, but you've reached the end of search results.
+     </div>
 
-    <!-- <a href="/src/i.html">Work - work</a> -->
-<form class="search-form" id="search-form">
-  <input 
-  autofocus
-    type="text"
-    name="searchQuery"
-    autocomplete="off"
-    placeholder="Search images..."
-  />
-  <button type="submit">🔍</button>
-</form>
-<div  class="gallery">
-</div>
-
-<button type="button" class="load-more hidden">Load more</button>
-<div class="message-finish hidden" hidden>🔴 We're sorry, but you've reached the end of search results.</div>
-
-<script src="./index.js" type="module"></script>
+     <script src="./index.js" type="module"></script>
   </body>
 </html>
