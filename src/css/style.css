@@ -134,6 +134,38 @@ box-shadow: 1px 1px 0px 0px rgba(0, 0, 0, 0.2),
 
 
 
+/**
+  |============================ 
+  | Button GO to UP
+  |============================
+*/
+.go-top {
+  font-size: 50px;
+  border: none;
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  cursor: pointer;
+  display: none;
+  background-color: var(--button-lightgreen-color);
+  width: 68px;
+  height: 68px;
+  border-radius: 8px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.but-arrow {
+  fill: var(--main-font-color);
+}
+
+.go-top:hover {
+  background-color: var(--background-grad);
+}
+.go-top--show {
+  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 

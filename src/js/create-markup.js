@@ -28,7 +28,8 @@ export default function creatMarkup(respArr) {
           </a>
        </div>
        `).join("");
-    refs.gallery.innerHTML = markupGel;
+   // refs.gallery.innerHTML = markupGel;
+   refs.gallery.insertAdjacentHTML('beforeend', markupGel);
     let lightbox = new SimpleLightbox('.gallery a');
     lightbox.refresh();
 }
